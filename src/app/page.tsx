@@ -9,6 +9,7 @@ import {
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { MdArrowForwardIos } from "react-icons/md";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const variants = {
@@ -23,13 +24,17 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 top-0 text-indigo-100 ">
           <div className="h-full w-full bg-gradient-to-br from-green-700/75 via-purple-700/75 to-indigo-700/75"></div>
           <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col justify-center  space-y-8  p-4 text-left md:items-center">
-            <h1 className="border-1 border-indigo-950 text-6xl font-semibold drop-shadow-2xl">
-              Welcome to Our Market Research Firm
+            <h1 className="border-1 spacing border-indigo-950 text-center text-6xl font-semibold tracking-tight drop-shadow-2xl">
+              Welcome 🙏 <br />
+              To Our Market Research Firm
             </h1>
             <p className="text-indigo-100 ">
               Providing insightful data analysis and market understanding to
               drive your business forward.
             </p>
+            <Link href="/contact-us">
+              <Button>Contact Us</Button>
+            </Link>
           </div>
         </div>
       </section>
