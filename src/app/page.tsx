@@ -23,18 +23,55 @@ export default function Home() {
 
         <div className="absolute bottom-0 left-0 right-0 top-0 text-indigo-100 ">
           <div className="h-full w-full bg-gradient-to-br from-green-700/75 via-purple-700/75 to-indigo-700/75"></div>
-          <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col justify-center  space-y-8  p-4 text-left md:items-center">
-            <h1 className="border-1 spacing border-indigo-950 text-center text-6xl font-semibold tracking-tight drop-shadow-2xl">
-              Welcome 🙏 <br />
-              To Our Market Research Firm
-            </h1>
-            <p className="text-indigo-100 ">
-              Providing insightful data analysis and market understanding to
-              drive your business forward.
-            </p>
-            <Link href="/contact-us">
-              <Button>Contact Us</Button>
-            </Link>
+          <div className="absolute bottom-0 left-0 right-0 top-0   flex   items-center justify-center gap-4 space-y-8 p-4 text-left  md:items-center">
+            <div className="flex flex-col justify-center space-y-4">
+              <h1 className="border-1 spacing border-indigo-950  text-6xl font-semibold tracking-normal drop-shadow-2xl">
+                Welcome 🙏 <br />
+                To Our Market Research Firm
+              </h1>
+              <p className="text-indigo-100 ">
+                Providing insightful data analysis and market understanding to
+                drive your business forward.
+              </p>
+              <Link href="/contact-us">
+                <Button>Contact Us</Button>
+              </Link>
+            </div>
+            <div className="flex items-center justify-center">
+              <form className="min-w-80 space-y-4 rounded-md bg-slate-50 p-8 text-slate-950 shadow-lg">
+                <div className="grid">
+                  <label>Name</label>
+                  <input
+                    className="border-1 rounded-lg border border-gray-400 p-2"
+                    type="text"
+                    placeholder="Enter Your Name"
+                  />
+                </div>
+                <div className="grid">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    className="border-1 rounded-lg border border-gray-400 p-2"
+                    placeholder="Enter Your email id"
+                  />
+                </div>
+                <div className="grid">
+                  <label>Phone No</label>
+                  <input
+                    type="tel"
+                    className="border-1 rounded-lg border border-gray-400 p-2"
+                    placeholder="Enter Your Phone No"
+                  />
+                </div>
+                <div className="grid">
+                  <label>Message</label>
+                  <textarea className="border-1 w-full rounded-lg border border-gray-400 p-2"></textarea>
+                </div>
+                <div className="flex justify-end">
+                  <Button className="text-end">Submit</Button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </section>
