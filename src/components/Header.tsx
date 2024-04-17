@@ -12,6 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenu,
 } from "./ui/dropdown-menu";
+import Marquee from "react-fast-marquee";
 
 export default async function Header() {
   const { user } = await validateRequest();
@@ -80,7 +81,7 @@ export default async function Header() {
         </div>
 
         <div className="w-full border border-t border-t-gray-200">
-          <marquee className="text-sm text-indigo-600">
+          <Marquee className="text-sm text-indigo-600">
             Data-Driven Decisions Start Here: Trusted Market Research for
             Strategic Growth | Navigate Your Market with Confidence: Tailored
             Research Solutions for Every Challenge | Illuminate Your Path to
@@ -94,7 +95,7 @@ export default async function Header() {
             for Competitive Advantage | From Data to Decisions: Your Trusted
             Partner in Market Intelligence | Discover, Analyze, Succeed: Unleash
             the Potential of Market Research for Your Business
-          </marquee>
+          </Marquee>
         </div>
       </header>
     </>
