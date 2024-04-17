@@ -2,14 +2,14 @@
 
 import { useFormState } from "react-dom";
 import { Button } from "../ui/button";
-import { aboutUSForm } from "@/actions/FormActions";
+import { aboutUsForm } from "@/actions/FormActions";
 
 export default function ContactUsForm() {
   const initialState = {
     message: "",
   };
 
-  const [fromState, fromAction] = useFormState(aboutUSForm, initialState);
+  const [fromState, fromAction] = useFormState(aboutUsForm, initialState);
 
   return (
     <form
