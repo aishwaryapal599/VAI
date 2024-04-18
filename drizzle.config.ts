@@ -1,18 +1,23 @@
 import "dotenv/config";
+import { Config } from "drizzle-kit";
 
-import type { Config } from "drizzle-kit";
+const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
-export default {
+const dbCredentials = {
+  host: DB_HOST as string,
+  port: Number(DB_PORT),
+  user: DB_USER as string,
+  password: DB_PASSWORD as string,
+  database: DB_NAME as string,
+};
+
+const drizzleConfig: Config = {
   schema: "./src/db/schema/",
   out: "./drizzle",
   driver: "mysql2",
-  dbCredentials: {
-    host: process.env.DB_HOST as string,
-    user: process.env.DB_USER as string,
-    password: process.env.DB_PASSWORD as string,
-    database: process.env.DB_NAME as string,
-    port: Number(process.env.DB_PORT) as number,
-  },
+  dbCredentials,
   verbose: true,
   strict: true,
-} as Config;
+};
+
+export default drizzleConfig;
