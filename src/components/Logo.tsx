@@ -1,8 +1,18 @@
 import { spawn } from "child_process";
+import Image from "next/image";
 
 export default function Logo() {
   return (
-    <span>LOGO</span>
+    <div className="w-28">
+      <Image
+        src="/assets/images/logo.png"
+        alt="logo"
+        width={120}
+        height={36}
+        className="h-full w-full"
+      />
+    </div>
+
     //     <svg
     //       className="h-10"
     //       version="1.1"
