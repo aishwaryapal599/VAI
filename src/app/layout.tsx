@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const Noto_sans = Noto_Sans({ subsets: ["latin"] });
 
@@ -18,11 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${Noto_sans.className} bg-slate-100`}>
-        <Header />
-        <main className=""> {children}</main>
-        <Footer />
-      </body>
+      <body className={`${Noto_sans.className} bg-slate-100`}>{children}</body>
     </html>
   );
 }

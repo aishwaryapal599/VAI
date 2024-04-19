@@ -2,7 +2,7 @@
 
 import { useFormState } from "react-dom";
 import { Button } from "../ui/button";
-import { aboutUsForm } from "@/actions/FormActions";
+import { aboutUsForm } from "@/serverActions/FormActions";
 
 export default function ContactUsForm() {
   const initialState = {

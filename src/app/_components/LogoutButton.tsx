@@ -1,5 +1,5 @@
 "use client";
-import { logout } from "@/actions/Authentication";
+import { logout } from "@/serverActions/Authentication";
 import React from "react";
 
 type LogoutButtonProps = {
