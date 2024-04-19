@@ -1,15 +1,16 @@
 "use client";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { MdArrowForwardIos } from "react-icons/md";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { MdArrowForwardIos } from "react-icons/md";
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const variants = {

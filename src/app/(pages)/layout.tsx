@@ -1,5 +1,5 @@
-import Footer from "../_components/Footer";
-import Header from "../_components/Header";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default function RootLayout({
   children,
@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      <main className="container mx-auto"> {children}</main>
+      <main> {children}</main>
       <Footer />
     </>
   );
