@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { aboutUsForm } from "@/serverActions/FormActions";
 
 export default function ContactUsForm() {

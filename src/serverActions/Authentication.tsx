@@ -1,15 +1,14 @@
 "use server";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { eq, sql } from "drizzle-orm";
 import { generateId } from "lucia";
-import type { MySql2Database } from "drizzle-orm/mysql2";
 import bcrypt from "bcrypt";
 
 import { lucia } from "@/auth/auth";
 import { getDb } from "@/db/db";
 import { users } from "@/db/schema/users";
 import { validateRequest } from "@/auth/validateRequest";
+import { createUser, getUserByUserName } from "@/db/queries/userQueries";
 
 type ActionResult = { message?: string };
 
@@ -30,29 +29,15 @@ export async function signup(
 
   const hashedPassword = bcrypt.hashSync(password, saltRounds);
   // const hashedPassword = await new Argon2id().hash(password);
-  const existingUser = await checkExistingUser(username, db);
+  const existingUser = await getUserByUserName(username, db);
   if (existingUser && existingUser.length > 0)
     return { message: "Username is already taken." };
 
   const userId = generateId(15);
 
-  await db
-    ?.insert(users)
-    .values({
-      id: userId,
-      username: username,
-      hashed_password: hashedPassword,
-    });
+  createUser(db, userId, username, hashedPassword);
 
-  const session = await lucia.createSession(userId, {});
-  const sessionCookie = lucia.createSessionCookie(session.id);
-  cookies().set(
-    sessionCookie.name,
-    sessionCookie.value,
-    sessionCookie.attributes,
-  );
-
-  return redirect(`/`);
+  return redirect(`/signin`);
 }
 
 export async function signin(
@@ -68,7 +53,7 @@ export async function signin(
   if (testUserName(username)) return { message: "Invalid username" };
   if (testPassword(password)) return { message: "Invalid password" };
 
-  const existingUser = await checkExistingUser(username, db);
+  const existingUser = await getUserByUserName(username, db);
 
   // NOTE:
   // Returning immediately allows malicious actors to figure out valid usernames from response times,
@@ -117,20 +102,6 @@ export async function logout(): Promise<ActionResult> {
   );
 
   return redirect("/");
-}
-
-async function checkExistingUser(
-  username: any,
-  db: MySql2Database<Record<string, never>> | null,
-) {
-  if (!db) return null;
-  const user = db
-    .select()
-    .from(users)
-    .where(eq(users.username, sql.placeholder(`username`)))
-    .prepare();
-
-  return await user.execute({ username: username });
 }
 
 function testUserName(username: FormDataEntryValue) {

@@ -1,7 +1,7 @@
 import { validateRequest } from "@/auth/validateRequest";
 import LogoutButton from "./LogoutButton";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { CircleUserRound, LibrarySquare } from "lucide-react";
 import Logo from "./Logo";
 import {
@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuItem,
   DropdownMenu,
-} from "./ui/dropdown-menu";
+} from "../ui/dropdown-menu";
 
 export default async function Header() {
   const { user } = await validateRequest();
