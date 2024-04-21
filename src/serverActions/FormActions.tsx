@@ -84,9 +84,9 @@ export async function heroFormSubmit(
     const validatedEmail = EmailSchema.parse(email);
     const validatedTel = TelSchema.parse(tel);
     await addUserCallbackRequest({
-      validatedName,
-      validatedEmail,
-      validatedTel,
+      email: validatedEmail,
+      name: validatedEmail,
+      phone: validatedEmail,
     });
   } catch (error) {
     return {
