@@ -1,10 +1,12 @@
 "use client";
 
-import { useFormState } from "react-dom";
-import Link from "next/link";
+import { useFormState } from 'react-dom';
 
-import { signup } from "@/serverActions/Authentication";
-import FormErrorMessage from "./FormErrorMessage";
+import Link from 'next/link';
+
+import { signup } from '@/serverActions/Authentication';
+
+import FormErrorMessage from './FormErrorMessage';
 
 export default function SignupForm() {
   const initialState = {

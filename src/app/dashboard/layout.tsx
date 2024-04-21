@@ -1,8 +1,9 @@
-import { validateRequest } from "@/auth/validateRequest";
-import { redirect } from "next/navigation";
-import AdminHeader from "@/components/admin/AdminHeader";
-import AdminSidebar from "@/components/admin/AdminSidebar";
-import { getUserType } from "@/db/queries/adminQueries";
+import { redirect } from 'next/navigation';
+
+import { validateRequest } from '@/auth/validateRequest';
+import AdminHeader from '@/components/admin/AdminHeader';
+import AdminSidebar from '@/components/admin/AdminSidebar';
+import { getUserType } from '@/db/queries/adminQueries';
 
 export default async function RootLayout({
   children,

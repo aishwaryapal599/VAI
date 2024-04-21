@@ -1,10 +1,11 @@
 "use server";
 
-import { addUserCallbackRequest } from "@/db/queries/userQueries";
-import { sanitizeHtmlUserInput } from "@/lib/utils";
+import 'server-only';
 
-import "server-only";
-import { z } from "zod";
+import { z } from 'zod';
+
+import { addUserCallbackRequest } from '@/db/queries/userQueries';
+import { sanitizeHtmlUserInput } from '@/lib/utils';
 
 type ActionResult = {
   type: null | "success" | "error";

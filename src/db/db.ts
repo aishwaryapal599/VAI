@@ -1,6 +1,7 @@
-import { drizzle } from "drizzle-orm/mysql2";
-import mysql from "mysql2/promise";
-import "dotenv/config";
+import 'dotenv/config';
+
+import { drizzle } from 'drizzle-orm/mysql2';
+import mysql from 'mysql2/promise';
 
 export const dbConfig = {
   host: process.env.DB_HOST as string,

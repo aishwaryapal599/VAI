@@ -1,3 +1,16 @@
-export default function FormErrorMessage({ message }: { message: string | undefined }) {
-    return <p className={message && 'text-base text-red-800 bg-red-200 rounded text-center px-3 py-1.5'}>{message}</p>;
+export default function FormErrorMessage({
+  message,
+}: {
+  message: string | undefined;
+}) {
+  return (
+    <p
+      className={
+        message &&
+        "rounded bg-red-200 px-3 py-1.5 text-center text-base text-red-800"
+      }
+    >
+      {message}
+    </p>
+  );
 }

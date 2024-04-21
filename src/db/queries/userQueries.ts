@@ -1,8 +1,13 @@
-import { users } from "../schema/users";
-import { eq, sql } from "drizzle-orm";
-import "server-only";
-import { db } from "../db";
-import { callback } from "../schema/requestcallback";
+import 'server-only';
+
+import {
+  eq,
+  sql,
+} from 'drizzle-orm';
+
+import { db } from '../db';
+import { callback } from '../schema/requestcallback';
+import { users } from '../schema/users';
 
 export async function createUser(
   userId: string,

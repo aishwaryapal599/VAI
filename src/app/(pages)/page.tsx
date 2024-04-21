@@ -1,16 +1,16 @@
 "use client";
-import Image from "next/image";
-import Autoplay from "embla-carousel-autoplay";
+import Autoplay from 'embla-carousel-autoplay';
+import Image from 'next/image';
+import Link from 'next/link';
+import { MdArrowForwardIos } from 'react-icons/md';
 
-import Link from "next/link";
-import { MdArrowForwardIos } from "react-icons/md";
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel";
-import HeroForm from "@/components/user/forms/HeroForm";
+} from '@/components/ui/carousel';
+import HeroForm from '@/components/user/forms/HeroForm';
 
 export default function Home() {
   const variants = {

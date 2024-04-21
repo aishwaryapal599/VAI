@@ -1,4 +1,6 @@
-import { Button } from "@/components/ui/button";
+import { Eye } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
 import {
   Table,
   TableBody,
@@ -7,9 +9,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { getCallbacks } from "@/db/queries/adminQueries";
-import { Eye } from "lucide-react";
+} from '@/components/ui/table';
+import { getCallbacks } from '@/db/queries/adminQueries';
 
 export default async function Responses() {
   const callbacks = await getCallbacks();

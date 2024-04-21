@@ -1,12 +1,17 @@
 "use server";
-import "server-only";
-import bcrypt from "bcrypt";
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
-import { generateId } from "lucia";
-import { lucia } from "@/auth/auth";
-import { validateRequest } from "@/auth/validateRequest";
-import { createUser, getUserByUserName } from "@/db/queries/userQueries";
+import 'server-only';
+
+import bcrypt from 'bcrypt';
+import { generateId } from 'lucia';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+
+import { lucia } from '@/auth/auth';
+import { validateRequest } from '@/auth/validateRequest';
+import {
+  createUser,
+  getUserByUserName,
+} from '@/db/queries/userQueries';
 
 type ActionResult = { message?: string };
 const saltRounds = 10;

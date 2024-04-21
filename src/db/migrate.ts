@@ -1,7 +1,8 @@
-import { drizzle } from "drizzle-orm/mysql2";
-import { migrate } from "drizzle-orm/mysql2/migrator";
-import { createConnection } from "mysql2";
-import { dbConfig } from "./db";
+import { drizzle } from 'drizzle-orm/mysql2';
+import { migrate } from 'drizzle-orm/mysql2/migrator';
+import { createConnection } from 'mysql2';
+
+import { dbConfig } from './db';
 
 const connection = createConnection(dbConfig);
 

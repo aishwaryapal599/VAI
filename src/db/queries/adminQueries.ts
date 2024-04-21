@@ -1,8 +1,10 @@
-import { users } from "../schema/users";
-import { eq, name, sql } from "drizzle-orm";
-import "server-only";
-import { db } from "../db";
-import { callback } from "../schema/requestcallback";
+import 'server-only';
+
+import { sql } from 'drizzle-orm';
+
+import { db } from '../db';
+import { callback } from '../schema/requestcallback';
+import { users } from '../schema/users';
 
 export async function getCallbacks() {
   return await db?.select().from(callback);
