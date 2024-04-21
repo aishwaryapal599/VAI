@@ -1,24 +1,20 @@
 "use server";
+import "server-only";
+import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { generateId } from "lucia";
-import bcrypt from "bcrypt";
-
 import { lucia } from "@/auth/auth";
-import { getDb } from "@/db/db";
-import { users } from "@/db/schema/users";
 import { validateRequest } from "@/auth/validateRequest";
 import { createUser, getUserByUserName } from "@/db/queries/userQueries";
 
 type ActionResult = { message?: string };
-
 const saltRounds = 10;
 
 export async function signup(
   currentState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  const db = await getDb();
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
 
@@ -29,13 +25,13 @@ export async function signup(
 
   const hashedPassword = bcrypt.hashSync(password, saltRounds);
   // const hashedPassword = await new Argon2id().hash(password);
-  const existingUser = await getUserByUserName(username, db);
+  const existingUser = await getUserByUserName(username);
   if (existingUser && existingUser.length > 0)
     return { message: "Username is already taken." };
 
   const userId = generateId(15);
 
-  createUser(db, userId, username, hashedPassword);
+  createUser(userId, username, hashedPassword);
 
   return redirect(`/signin`);
 }
@@ -44,7 +40,6 @@ export async function signin(
   currentState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  const db = await getDb();
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
 
@@ -53,7 +48,7 @@ export async function signin(
   if (testUserName(username)) return { message: "Invalid username" };
   if (testPassword(password)) return { message: "Invalid password" };
 
-  const existingUser = await getUserByUserName(username, db);
+  const existingUser = await getUserByUserName(username);
 
   // NOTE:
   // Returning immediately allows malicious actors to figure out valid usernames from response times,
@@ -88,7 +83,6 @@ export async function signin(
 }
 
 export async function logout(): Promise<ActionResult> {
-  const db = await getDb();
   const { session } = await validateRequest();
   if (!session) return { message: "Unauthorized" };
 

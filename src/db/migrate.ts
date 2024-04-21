@@ -1,22 +1,22 @@
-import 'dotenv/config';
+import { drizzle } from "drizzle-orm/mysql2";
+import { migrate } from "drizzle-orm/mysql2/migrator";
+import { createConnection } from "mysql2";
+import { dbConfig } from "./db";
 
-import { migrate } from 'drizzle-orm/mysql2/migrator';
+const connection = createConnection(dbConfig);
 
-import { closeDb, getDb } from './db';
+const db = drizzle(connection);
+const migrateDB = async () => {
+  try {
+    console.log("Migration Started");
+    await migrate(db, { migrationsFolder: "drizzle" });
+    console.log("migration Completed");
+  } catch (err) {
+    console.log(err);
+  } finally {
+    console.log("Connection Closed");
+    await connection.end();
+  }
+};
 
-async function migrateAndCloseConnection(): Promise<void> {
-    let db;
-    try {
-        db = await getDb();
-        if (db) {
-            await migrate(db, { migrationsFolder: './drizzle' });
-            console.log('Migration completed successfully.');
-        }
-    } catch (error) {
-        console.error('Error during migration:', error);
-    } finally {
-        await closeDb();
-    }
-}
-
-migrateAndCloseConnection();
+migrateDB();

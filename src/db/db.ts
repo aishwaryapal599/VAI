@@ -1,4 +1,4 @@
-import { drizzle, MySql2Database } from "drizzle-orm/mysql2";
+import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
 import "dotenv/config";
 
@@ -10,29 +10,9 @@ export const dbConfig = {
   port: Number(process.env.DB_PORT) as number,
 };
 
-const pool = mysql.createPool({
+const poolConnection = mysql.createPool({
   ...dbConfig,
   connectionLimit: 10,
 });
 
-export const getDb = async (): Promise<MySql2Database<
-  Record<string, never>
-> | null> => {
-  try {
-    const connection = await pool.getConnection();
-    const db = drizzle(connection);
-    return db;
-  } catch (error) {
-    console.error("Error while getting database:", error);
-    return null;
-  }
-};
-
-export const closeDb = async (): Promise<void> => {
-  try {
-    pool.end();
-    console.log("Database connection pool closed.");
-  } catch (error) {
-    console.error("Error while closing database connection pool:", error);
-  }
-};
+export const db = drizzle(poolConnection);

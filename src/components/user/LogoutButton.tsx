@@ -1,20 +1,17 @@
 "use client";
 import { logout } from "@/serverActions/Authentication";
 import React from "react";
+import { DropdownMenuItem } from "../ui/dropdown-menu";
 
-type LogoutButtonProps = {
-  className?: string;
-};
-
-export default function LogoutButton({ className = "" }: LogoutButtonProps) {
+export default function LogoutButton() {
   return (
-    <button
+    <DropdownMenuItem
+      className="cursor-pointer"
       onClick={async () => {
         logout();
       }}
-      className={`${className}`}
     >
       Sign out
-    </button>
+    </DropdownMenuItem>
   );
 }

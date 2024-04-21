@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page() {
   return (
     <section className="prose mx-auto my-20 max-w-4xl space-y-8 ">
       <h2 className="our-services">Custom Resarch Projects</h2>

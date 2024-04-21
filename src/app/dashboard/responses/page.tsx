@@ -8,9 +8,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getCallbacks } from "@/db/queries/adminQueries";
 import { Eye } from "lucide-react";
 
-export default function Responses() {
+export default async function Responses() {
+  const callbacks = await getCallbacks();
+
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
       <div className="flex items-center">
@@ -29,35 +32,26 @@ export default function Responses() {
               <TableHead>Name</TableHead>
               <TableHead>Email ID</TableHead>
               <TableHead>Phone </TableHead>
-              <TableHead>Message</TableHead>
+
               <TableHead className="text-right">Action</TableHead>
-
-              {/* 
-              
-              Name
-
-              
-              */}
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className="font-medium">INV001</TableCell>
-              <TableCell>12/12/2024</TableCell>
-              <TableHead>Lorem, ipsum.</TableHead>
-              <TableHead>test@mail.com</TableHead>
-              <TableHead>123456789</TableHead>
-              <TableHead>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque
-                aliquam rerum, ipsam mollitia molestias sequi nulla dolores ex
-                eveniet dolore!
-              </TableHead>
-              <TableCell className="text-right">
-                <Button>
-                  <Eye className="h-4 w-4" />
-                </Button>
-              </TableCell>
-            </TableRow>
+            {callbacks.map((callback) => (
+              <TableRow key={callback.id}>
+                <TableCell className="font-medium">{callback.id}</TableCell>
+                <TableCell>12/12/2024</TableCell>
+                <TableHead>{callback.name}</TableHead>
+                <TableHead>{callback.email}</TableHead>
+                <TableHead>{callback.phone}</TableHead>
+
+                <TableCell className="text-right">
+                  <Button>
+                    <Eye className="h-4 w-4" />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>
