@@ -3,7 +3,7 @@ import 'server-only';
 import { sql } from 'drizzle-orm';
 
 import { db } from '../db';
-import { callback } from '../schema/requestcallback';
+import { callback } from '../schema/formSchemas';
 import { users } from '../schema/users';
 
 export async function getCallbacks() {

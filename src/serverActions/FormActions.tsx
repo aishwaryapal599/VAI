@@ -4,7 +4,10 @@ import 'server-only';
 
 import { z } from 'zod';
 
-import { addUserCallbackRequest } from '@/db/queries/userQueries';
+import {
+  addUserCallbackRequest,
+  addUserContactUs,
+} from '@/db/queries/userQueries';
 import { sanitizeHtmlUserInput } from '@/lib/utils';
 
 type ActionResult = {
@@ -20,10 +23,42 @@ export async function aboutUsForm(
   currentState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  const firstName = formData.get("fname");
-  const lastName = formData.get("lname");
-  const phoneNo = formData.get("phoneno");
-  const emailId = formData.get("email");
+  const firstName = sanitizeHtmlUserInput(
+    formData.get("fname")?.toString() || "",
+  );
+  const lastName = sanitizeHtmlUserInput(
+    formData.get("lname")?.toString() || "",
+  );
+  const phoneNo = sanitizeHtmlUserInput(
+    formData.get("phoneno")?.toString() || "",
+  );
+  const emailId = sanitizeHtmlUserInput(
+    formData.get("email")?.toString() || "",
+  );
+
+  if (!firstName || !lastName || !phoneNo || !emailId)
+    return {
+      type: "success",
+      message: `Invalid Input`,
+    };
+  try {
+    const validatedFirstName = NameSchema.parse(firstName);
+    const validatedLastName = NameSchema.parse(lastName);
+    const validatedEmail = EmailSchema.parse(emailId);
+    const validatedPhone = TelSchema.parse(phoneNo);
+    await addUserContactUs({
+      email: validatedEmail,
+      firstName: validatedFirstName,
+      lastName: validatedLastName,
+      phone: validatedPhone,
+    });
+  } catch (error) {
+    return {
+      type: "error",
+      message: "Invalid",
+    };
+  }
+
   return {
     type: "success",
     message: ` ${firstName} ${lastName} ${phoneNo} ${emailId}`,
@@ -48,7 +83,11 @@ export async function heroFormSubmit(
     const validatedName = NameSchema.parse(name);
     const validatedEmail = EmailSchema.parse(email);
     const validatedTel = TelSchema.parse(tel);
-    await addUserCallbackRequest(validatedName, validatedEmail, validatedTel);
+    await addUserCallbackRequest({
+      validatedName,
+      validatedEmail,
+      validatedTel,
+    });
   } catch (error) {
     return {
       type: "error",
