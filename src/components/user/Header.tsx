@@ -52,8 +52,10 @@ export default async function Header() {
                     <DropdownMenuContent>
                       <DropdownMenuLabel>{user.username}</DropdownMenuLabel>
                       <DropdownMenuSeparator />
-                      {/* <DropdownMenuItem>Dashboard</DropdownMenuItem>
-                      <DropdownMenuItem>Billing</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Link href="/dashboard">Dashboard</Link>
+                      </DropdownMenuItem>
+                      {/* <DropdownMenuItem>Billing</DropdownMenuItem>
                       <DropdownMenuItem>Team</DropdownMenuItem> */}
                       <DropdownMenuItem>
                         <LogoutButton />

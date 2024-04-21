@@ -7,6 +7,7 @@ import { aboutUsForm } from "@/serverActions/FormActions";
 export default function ContactUsForm() {
   const initialState = {
     message: "",
+    type: null,
   };
 
   const [fromState, fromAction] = useFormState(aboutUsForm, initialState);

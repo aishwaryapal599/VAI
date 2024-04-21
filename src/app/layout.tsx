@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const Noto_sans = Noto_Sans({ subsets: ["latin"] });
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${Noto_sans.className} bg-slate-100`}>{children}</body>
+      <body className={`${Noto_sans.className} bg-slate-100`}>
+        {children}
+        <Toaster richColors />
+      </body>
     </html>
   );
 }

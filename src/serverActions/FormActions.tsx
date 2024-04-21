@@ -2,11 +2,14 @@
 
 import { addUserCallbackRequest } from "@/db/queries/userQueries";
 import { sanitizeHtmlUserInput } from "@/lib/utils";
-import { redirect } from "next/navigation";
+
 import "server-only";
 import { z } from "zod";
 
-type ActionResult = { message?: string };
+type ActionResult = {
+  type: null | "success" | "error";
+  message?: string;
+};
 
 const NameSchema = z.string().min(2).max(50);
 const EmailSchema = z.string().email();
@@ -20,7 +23,10 @@ export async function aboutUsForm(
   const lastName = formData.get("lname");
   const phoneNo = formData.get("phoneno");
   const emailId = formData.get("email");
-  return { message: ` ${firstName} ${lastName} ${phoneNo} ${emailId}` };
+  return {
+    type: "success",
+    message: ` ${firstName} ${lastName} ${phoneNo} ${emailId}`,
+  };
 }
 
 export async function heroFormSubmit(
@@ -32,7 +38,10 @@ export async function heroFormSubmit(
   const tel = sanitizeHtmlUserInput(formData.get("tel")?.toString() || "");
 
   if (!name || !email || !tel || name == "" || email == "" || tel == "")
-    return { message: "Invalid" };
+    return {
+      type: "error",
+      message: "Invalid",
+    };
 
   try {
     const validatedName = NameSchema.parse(name);
@@ -41,11 +50,13 @@ export async function heroFormSubmit(
     await addUserCallbackRequest(validatedName, validatedEmail, validatedTel);
   } catch (error) {
     return {
+      type: "error",
       message: "Invalid",
     };
   }
 
   return {
+    type: "success",
     message: "Submitted",
   };
 }
