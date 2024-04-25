@@ -1,5 +1,4 @@
-import { spawn } from "child_process";
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function Logo() {
   return (

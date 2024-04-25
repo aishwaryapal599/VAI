@@ -1,20 +1,30 @@
 "use client";
-
+import { useRef } from "react";
 import { useFormState } from "react-dom";
-import { Button } from "../ui/button";
-import { aboutUsForm } from "@/actions/FormActions";
+
+import { toast } from "sonner";
+
+import FormSubmitButton from "@/components/FormSubmitButton";
+import { contactUsFormSubmit } from "@/serverActions/FormActions";
 
 export default function ContactUsForm() {
-  const initialState = {
-    message: "",
-  };
+  const initialState = { message: "", type: null };
+  const formRef = useRef<HTMLFormElement>(null);
+  const [formState, fromAction] = useFormState(
+    contactUsFormSubmit,
+    initialState,
+  );
 
-  const [fromState, fromAction] = useFormState(aboutUsForm, initialState);
-
+  formState.type === "error" && toast.error(formState.message);
+  formState.type === "success" && toast.success(formState.message);
   return (
     <form
+      ref={formRef}
       className="mx-auto max-w-96 space-y-4 rounded-lg border border-gray-950/10 bg-slate-50 p-8 text-base font-semibold shadow-lg"
-      action={fromAction}
+      action={async (formData) => {
+        fromAction(formData);
+        formRef.current?.reset();
+      }}
     >
       <div className="grid w-full">
         <label> First Name: </label>
@@ -48,10 +58,7 @@ export default function ContactUsForm() {
           name="email"
         />
       </div>
-
-      <Button className="rounded-lg border border-gray-950/10 p-2 ">
-        Contact us
-      </Button>
+      <FormSubmitButton>Contact us</FormSubmitButton>
     </form>
   );
 }
