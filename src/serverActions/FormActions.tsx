@@ -1,14 +1,15 @@
 "use server";
 
-import 'server-only';
+import "server-only";
 
-import { z } from 'zod';
+import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
 import {
   addUserCallbackRequest,
   addUserContactUs,
-} from '@/db/queries/userQueries';
-import { sanitizeHtmlUserInput } from '@/lib/utils';
+} from "@/db/queries/userQueries";
+import { sanitizeHtmlUserInput } from "@/lib/utils";
 
 type ActionResult = {
   type: null | "success" | "error";
@@ -19,7 +20,7 @@ const NameSchema = z.string().min(2).max(50);
 const EmailSchema = z.string().email();
 const TelSchema = z.string().regex(/^\d{10}$/);
 
-export async function aboutUsForm(
+export async function contactUsFormSubmit(
   currentState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
@@ -58,7 +59,7 @@ export async function aboutUsForm(
       message: "Invalid",
     };
   }
-
+  revalidatePath("/dashboard/contact-us");
   return {
     type: "success",
     message: ` ${firstName} ${lastName} ${phoneNo} ${emailId}`,
@@ -85,8 +86,8 @@ export async function heroFormSubmit(
     const validatedTel = TelSchema.parse(tel);
     await addUserCallbackRequest({
       email: validatedEmail,
-      name: validatedEmail,
-      phone: validatedEmail,
+      name: validatedName,
+      phone: validatedTel,
     });
   } catch (error) {
     return {
@@ -94,6 +95,8 @@ export async function heroFormSubmit(
       message: "Invalid",
     };
   }
+
+  revalidatePath("/dashboard/callback");
 
   return {
     type: "success",

@@ -1,17 +1,14 @@
 "use server";
-import 'server-only';
+import "server-only";
 
-import bcrypt from 'bcrypt';
-import { generateId } from 'lucia';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import bcrypt from "bcrypt";
+import { generateId } from "lucia";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-import { lucia } from '@/auth/auth';
-import { validateRequest } from '@/auth/validateRequest';
-import {
-  createUser,
-  getUserByUserName,
-} from '@/db/queries/userQueries';
+import { lucia } from "@/auth/auth";
+import { validateRequest } from "@/auth/validateRequest";
+import { createUser, getUserByUserName } from "@/db/queries/userQueries";
 
 type ActionResult = { message?: string };
 const saltRounds = 10;
@@ -20,7 +17,7 @@ export async function signup(
   currentState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  const username = formData.get("username") as string;
+  let username = formData.get("username") as string;
   const password = formData.get("password") as string;
 
   if (!username || !password)
@@ -64,6 +61,7 @@ export async function signin(
   // Since protecting against this is non-trivial,
   // it is crucial your implementation is protected against brute-force attacks with login throttling etc.
   // If usernames are public, you may outright tell the user that the username is invalid.
+
   if (!existingUser || existingUser.length === 0)
     return { message: "Incorrect username or password" };
 

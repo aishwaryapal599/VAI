@@ -1,24 +1,7 @@
+import { Bell, Headset, Home, Package2, Phone } from "lucide-react";
 import Link from "next/link";
-import {
-  Bell,
-  Home,
-  LineChart,
-  MessageCircleMore,
-  Package,
-  Package2,
-  ShoppingCart,
-  Users,
-} from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 
 export default function AdminSidebar() {
   const className =
@@ -48,11 +31,18 @@ export default function AdminSidebar() {
               Dashboard
             </Link>
             <Link
-              href="/dashboard/responses"
+              href="/dashboard/callback"
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
             >
-              <MessageCircleMore className="h-4 w-4" />
-              Responses
+              <Headset className="h-4 w-4" />
+              Callback
+            </Link>
+            <Link
+              href="/dashboard/contact-us"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+            >
+              <Phone className="h-4 w-4" />
+              Contact us
             </Link>
             {/* <Link
               href="#"

@@ -1,13 +1,16 @@
-import 'server-only';
+import "server-only";
 
-import { sql } from 'drizzle-orm';
+import { sql } from "drizzle-orm";
 
-import { db } from '../db';
-import { callback } from '../schema/formSchemas';
-import { users } from '../schema/users';
+import { db } from "../db";
+import { callback, contactUs } from "../schema/formSchemas";
+import { users } from "../schema/users";
 
 export async function getCallbacks() {
   return await db?.select().from(callback);
+}
+export async function getContactUs() {
+  return await db?.select().from(contactUs);
 }
 
 export async function getUserType(userId: string) {
@@ -16,5 +19,3 @@ export async function getUserType(userId: string) {
     .from(users)
     .where(sql`${users.id} = ${userId}`);
 }
-
-// SELECT  users.user_type FROM users WHERE id = 'b1jap1489yzgu35'

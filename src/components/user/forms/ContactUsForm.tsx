@@ -1,16 +1,19 @@
 "use client";
-import { useRef } from 'react';
-import { useFormState } from 'react-dom';
+import { useRef } from "react";
+import { useFormState } from "react-dom";
 
-import { toast } from 'sonner';
+import { toast } from "sonner";
 
-import FormSubmitButton from '@/components/FormSubmitButton';
-import { aboutUsForm } from '@/serverActions/FormActions';
+import FormSubmitButton from "@/components/FormSubmitButton";
+import { contactUsFormSubmit } from "@/serverActions/FormActions";
 
 export default function ContactUsForm() {
   const initialState = { message: "", type: null };
   const formRef = useRef<HTMLFormElement>(null);
-  const [formState, fromAction] = useFormState(aboutUsForm, initialState);
+  const [formState, fromAction] = useFormState(
+    contactUsFormSubmit,
+    initialState,
+  );
 
   formState.type === "error" && toast.error(formState.message);
   formState.type === "success" && toast.success(formState.message);
