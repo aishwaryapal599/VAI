@@ -1,0 +1,43 @@
+[
+  {
+    "qno": 1,
+    "question": "What is the main business sector your company operates in (e.g. manufacturing, retail, farming, etc.)?",
+    "type": "text"
+  },
+  {
+    "qno": 2,
+    "question": "Consider about  last 12 months, how would you describe your business state?",
+    "type": "select",
+    "options": ["Excellent", "Good", "Fare", "Fluctuating", "Poor"]
+  },
+  {
+    "qno": 3,
+    "question": "Looking forward to the next 2 to 3 years, what is your expectation regarding  marketing of your products or services?",
+    "type": "select",
+    "options": [
+      "Fast growing",
+      "Growing steadily",
+      "Stable",
+      "Fluctuating",
+      "Reducing"
+    ]
+  },
+  {
+    "qno": 4,
+    "question": "Overall, how would you describe your target of your business over the next 4 to 5 years?",
+    "type": "select",
+    "options": [
+      "To grow fast",
+      "Grow steadily",
+      "Remain as now",
+      "Reduce",
+      "Sell up",
+      "Unpredictable"
+    ]
+  },
+  {
+    "qno": 5,
+    "question": "What do you feel about your biggest obstacle in achieving your business objective?",
+    "type": "text"
+  }
+]

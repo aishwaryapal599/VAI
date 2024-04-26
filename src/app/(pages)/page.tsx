@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className=" mx-auto my-20 max-w-4xl px-4">
+      <section id="sesrvices-section" className=" mx-auto my-20 max-w-4xl px-4">
         <h2 className="mb-8 text-3xl font-semibold">Services</h2>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 ">
           <Link
@@ -74,20 +74,7 @@ export default function Home() {
             <div>Product and Brand Research</div>
             <MdArrowForwardIos />
           </Link>
-          <Link
-            className="flex w-full items-center justify-between rounded-lg border border-gray-300 p-4 transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg"
-            href="/services/advertising-and-campaign-evaluation"
-          >
-            <div>Advertising and Campaign Evaluation</div>
-            <MdArrowForwardIos />
-          </Link>
-          <Link
-            className="flex w-full items-center justify-between rounded-lg border border-gray-300 p-4 transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg"
-            href="/services/custom-research-projects"
-          >
-            <div>Custom Research Projects</div>
-            <MdArrowForwardIos />
-          </Link>
+         
         </div>
       </section>
     </>

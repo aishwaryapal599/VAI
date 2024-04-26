@@ -1,0 +1,24 @@
+[
+  {
+    "qno": 1,
+    "question": "Please rate your overall experience with the product?",
+    "type": "select",
+    "options": ["Excellent", "Good", "Satisfactory", "Not Very Good", "Poor"]
+  },
+  {
+    "qno": 2,
+    "question": "How long did you have to wait to receive the product?",
+    "type": "text"
+  },
+  {
+    "qno": 3,
+    "question": "How often do you visit the organization?",
+    "type": "select",
+    "options": ["Daily", "Weekly", "Monthly", "Occasionally"]
+  },
+  {
+    "qno": 4,
+    "question": "Grate the product you have received from the organization?",
+    "type": "text"
+  }
+]

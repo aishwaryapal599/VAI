@@ -45,6 +45,14 @@ export default async function Header() {
                     Contact
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    className="text-sm transition-all duration-300 ease-in-out hover:text-indigo-500"
+                    href="/services"
+                  >
+                    Services
+                  </Link>
+                </li>
 
                 {user ? (
                   <DropdownMenu>
@@ -57,8 +65,6 @@ export default async function Header() {
                       <DropdownMenuItem>
                         <Link href="/dashboard">Dashboard</Link>
                       </DropdownMenuItem>
-                      {/* <DropdownMenuItem>Billing</DropdownMenuItem>
-                      <DropdownMenuItem>Team</DropdownMenuItem> */}
                       <DropdownMenuItem>
                         <LogoutButton />
                       </DropdownMenuItem>

@@ -1,0 +1,53 @@
+[
+  {
+    "qno": 1,
+    "question": "Describe what does brands means to you?",
+    "type": "text"
+  },
+  {
+    "qno": 2,
+    "question": "Is this your 1st time using Vyapar Anusandhan Insights?",
+    "type": "select",
+    "options": ["Yes", "No"]
+  },
+  {
+    "qno": 3,
+    "question": "Where did you get the information about Vyapar Anusandhan Insights?",
+    "type": "select",
+    "options": [
+      "TV Commercial Ad",
+      "Radio Advertisement",
+      "Magazine",
+      "Poster Flyer",
+      "Online Advertisement",
+      "Others"
+    ]
+  },
+  {
+    "qno": 4,
+    "question": "Where do you often buy your product?",
+    "type": "text"
+  },
+  {
+    "qno": 5,
+    "question": "Overall how satisfied were you with your product?",
+    "type": "select",
+    "options": ["Not at all", "Some what", "Satisfied", "Very satisfied"]
+  },
+  {
+    "qno": 6,
+    "question": "Have you ever contact a customers service?",
+    "type": "select",
+    "options": ["Yes", "No"]
+  },
+  {
+    "qno": 7,
+    "question": "If you contacted Vyapar Anusandhan Insights's customer service have all problem been resolved to a complete satisfaction?",
+    "type": "select",
+    "options": [
+      "Yes by the company representative",
+      "Yes by someone outside the company",
+      "No the problem not resolved"
+    ]
+  }
+]
