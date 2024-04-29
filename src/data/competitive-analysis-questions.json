@@ -1,0 +1,33 @@
+[
+  {
+    "qno": 1,
+    "question": "Rate  Our Overall service experience between 1 and 5",
+    "type": "select",
+    "options": ["1", "2", "3", "4", "5"]
+  },
+  {
+    "qno": 2,
+    "question": "Rate our product Design experience between 1 and 5",
+    "type": "select",
+    "options": ["1", "2", "3", "4", "5"]
+  },
+
+  {
+    "qno": 3,
+    "question": "Rate our product Features between 1 and 5",
+    "type": "select",
+    "options": ["1", "2", "3", "4", "5"]
+  },
+  {
+    "qno": 4,
+    "question": "Rate Our Product Usefullness between 1 and 5",
+    "type": "select",
+    "options": ["1", "2", "3", "4", "5"]
+  },
+  {
+    "qno": 5,
+    "question": "Rate Our Customer Service between 1 and 5",
+    "type": "select",
+    "options": ["1", "2", "3", "4", "5"]
+  }
+]

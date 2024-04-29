@@ -103,3 +103,42 @@ export async function heroFormSubmit(
     message: "Submitted",
   };
 }
+
+export async function surveyFormSubmit(
+  currentState: ActionResult,
+  formData: FormData,
+): Promise<ActionResult> {
+  console.log(formData);
+  const name = sanitizeHtmlUserInput(formData.get("name")?.toString() || "");
+  const email = sanitizeHtmlUserInput(formData.get("email")?.toString() || "");
+  const tel = sanitizeHtmlUserInput(formData.get("tel")?.toString() || "");
+
+  if (!name || !email || !tel || name == "" || email == "" || tel == "")
+    return {
+      type: "error",
+      message: "Invalid",
+    };
+
+  try {
+    const validatedName = NameSchema.parse(name);
+    const validatedEmail = EmailSchema.parse(email);
+    const validatedTel = TelSchema.parse(tel);
+    await addUserCallbackRequest({
+      email: validatedEmail,
+      name: validatedName,
+      phone: validatedTel,
+    });
+  } catch (error) {
+    return {
+      type: "error",
+      message: "Invalid",
+    };
+  }
+
+  revalidatePath("/dashboard/callback");
+
+  return {
+    type: "success",
+    message: "Submitted",
+  };
+}
