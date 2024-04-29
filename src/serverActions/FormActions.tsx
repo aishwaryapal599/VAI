@@ -8,6 +8,7 @@ import { z } from "zod";
 import {
   addUserCallbackRequest,
   addUserContactUs,
+  saveSurveyData,
 } from "@/db/queries/userQueries";
 import { sanitizeHtmlUserInput } from "@/lib/utils";
 
@@ -101,5 +102,59 @@ export async function heroFormSubmit(
   return {
     type: "success",
     message: "Submitted",
+  };
+}
+
+export async function surveyFormSubmit(
+  currentState: ActionResult,
+  formData: FormData,
+): Promise<ActionResult> {
+  const formDataObject: { [key: string]: string } = {};
+
+  for (const [key, value] of formData.entries()) {
+    formDataObject[key] = sanitizeHtmlUserInput(value.toString() || "");
+  }
+
+  const {
+    fullName,
+    organizationName,
+    organizationEmail,
+    organizationPhone,
+    pathname,
+    ...jsonData
+  } = formDataObject;
+
+  if (
+    !fullName ||
+    !organizationName ||
+    !organizationEmail ||
+    !organizationPhone ||
+    !pathname ||
+    !jsonData
+  )
+    return {
+      type: "error",
+      message: "Invalid",
+    };
+
+  try {
+    saveSurveyData({
+      fullName: fullName,
+      organizationName: organizationName,
+      organizationEmail: organizationEmail,
+      organizationPhone: organizationPhone,
+      pathname: pathname,
+      surveyData: JSON.stringify(jsonData),
+    });
+  } catch (error) {
+    return {
+      type: "error",
+      message: "Invalid",
+    };
+  }
+
+  return {
+    type: "success",
+    message: "thanks for your taking time to fill the survey",
   };
 }

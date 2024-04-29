@@ -1,16 +1,11 @@
-import 'server-only';
+import "server-only";
 
-import {
-  eq,
-  sql,
-} from 'drizzle-orm';
+import { eq, sql } from "drizzle-orm";
 
-import { db } from '../db';
-import {
-  callback,
-  contactUs,
-} from '../schema/formSchemas';
-import { users } from '../schema/users';
+import { db } from "../db";
+import { callback, contactUs } from "../schema/formSchemas";
+import { servicesSurvey } from "../schema/service";
+import { users } from "../schema/users";
 
 export async function createUser(
   userId: string,
@@ -59,12 +54,35 @@ export async function addUserContactUs({
   email: string;
   phone: string;
 }) {
-  return await db
-    .insert(contactUs)
-    .values({
-      email: email,
-      first_name: firstName,
-      last_name: lastName,
-      phone: phone,
-    });
+  return await db.insert(contactUs).values({
+    email: email,
+    first_name: firstName,
+    last_name: lastName,
+    phone: phone,
+  });
+}
+
+export async function saveSurveyData({
+  fullName,
+  organizationName,
+  organizationEmail,
+  organizationPhone,
+  pathname,
+  surveyData,
+}: {
+  fullName: string;
+  organizationName: string;
+  organizationEmail: string;
+  organizationPhone: string;
+  pathname: string;
+  surveyData: string;
+}) {
+  return await db.insert(servicesSurvey).values({
+    fullName: fullName,
+    organizationName: organizationName,
+    organizationEmail: organizationEmail,
+    organizationPhone: organizationPhone,
+    pathname: pathname,
+    surveyData: surveyData,
+  });
 }
