@@ -1,4 +1,11 @@
-import { Bell, Headset, Home, Package2, Phone } from "lucide-react";
+import {
+  Bell,
+  ClipboardList,
+  Headset,
+  Home,
+  Package2,
+  Phone,
+} from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -43,6 +50,13 @@ export default function AdminSidebar() {
             >
               <Phone className="h-4 w-4" />
               Contact us
+            </Link>
+            <Link
+              href="/dashboard/survey"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+            >
+              <ClipboardList className="h-4 w-4" />
+              Survey
             </Link>
             {/* <Link
               href="#"

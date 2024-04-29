@@ -8,6 +8,7 @@ import { z } from "zod";
 import {
   addUserCallbackRequest,
   addUserContactUs,
+  saveSurveyData,
 } from "@/db/queries/userQueries";
 import { sanitizeHtmlUserInput } from "@/lib/utils";
 
@@ -108,25 +109,42 @@ export async function surveyFormSubmit(
   currentState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  console.log(formData);
-  const name = sanitizeHtmlUserInput(formData.get("name")?.toString() || "");
-  const email = sanitizeHtmlUserInput(formData.get("email")?.toString() || "");
-  const tel = sanitizeHtmlUserInput(formData.get("tel")?.toString() || "");
+  const formDataObject: { [key: string]: string } = {};
 
-  if (!name || !email || !tel || name == "" || email == "" || tel == "")
+  for (const [key, value] of formData.entries()) {
+    formDataObject[key] = sanitizeHtmlUserInput(value.toString() || "");
+  }
+
+  const {
+    fullName,
+    organizationName,
+    organizationEmail,
+    organizationPhone,
+    pathname,
+    ...jsonData
+  } = formDataObject;
+
+  if (
+    !fullName ||
+    !organizationName ||
+    !organizationEmail ||
+    !organizationPhone ||
+    !pathname ||
+    !jsonData
+  )
     return {
       type: "error",
       message: "Invalid",
     };
 
   try {
-    const validatedName = NameSchema.parse(name);
-    const validatedEmail = EmailSchema.parse(email);
-    const validatedTel = TelSchema.parse(tel);
-    await addUserCallbackRequest({
-      email: validatedEmail,
-      name: validatedName,
-      phone: validatedTel,
+    saveSurveyData({
+      fullName: fullName,
+      organizationName: organizationName,
+      organizationEmail: organizationEmail,
+      organizationPhone: organizationPhone,
+      pathname: pathname,
+      surveyData: JSON.stringify(jsonData),
     });
   } catch (error) {
     return {
@@ -135,10 +153,8 @@ export async function surveyFormSubmit(
     };
   }
 
-  revalidatePath("/dashboard/callback");
-
   return {
     type: "success",
-    message: "Submitted",
+    message: "thanks for your taking time to fill the survey",
   };
 }

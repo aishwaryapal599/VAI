@@ -51,10 +51,7 @@ export default function Page() {
         </p>
       </section>
       <div className="fixed bottom-0 right-0 mb-4  mr-4">
-        <ServicesModal
-          questions={questions}
-          page="services/competitive-analysis"
-        />
+        <ServicesModal questions={questions} />
       </div>
     </>
   );

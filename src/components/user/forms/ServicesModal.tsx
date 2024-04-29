@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { useFormState } from "react-dom";
 
 import { Divide } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { toast } from "sonner";
 
 import {
   Dialog,
@@ -29,15 +31,14 @@ type Questions = (
     }
 )[];
 
-export default function ServicesModal({
-  questions,
-  page,
-}: {
-  questions: Questions;
-  page: string;
-}) {
+export default function ServicesModal({ questions }: { questions: Questions }) {
+  const pathname = usePathname();
+  const formRef = useRef<HTMLFormElement>(null);
   const initialState = { type: null, message: "" };
   const [formState, fromAction] = useFormState(surveyFormSubmit, initialState);
+
+  formState.type === "error" && toast.error(formState.message);
+  formState.type === "success" && toast.success(formState.message);
   return (
     <Dialog>
       <DialogTrigger className="rounded-full bg-indigo-50/50 p-4 font-semibold text-indigo-950 shadow-lg backdrop-blur-3xl hover:bg-indigo-50/75">
@@ -49,8 +50,14 @@ export default function ServicesModal({
             Are you absolutely sure?
           </DialogTitle>
           <DialogDescription>
-            <form action={fromAction}>
-              <input type="hidden" name="formPage" value={page} />
+            <form
+              ref={formRef}
+              action={async (formData) => {
+                fromAction(formData);
+                formRef.current?.reset();
+              }}
+            >
+              <input type="hidden" name="pathname" value={pathname} />
               <div className="flex flex-col  rounded-lg ">
                 <div className="mb-4 space-y-2">
                   <label className="flex text-base">Full Name</label>
@@ -96,7 +103,7 @@ export default function ServicesModal({
                     {item.type === "select" ? (
                       <select
                         className=" w-full rounded-lg border-2 border-gray-300 p-2"
-                        name={`question${item.qno}`}
+                        name={item.question}
                       >
                         <option disabled selected value="">
                           Select an option
@@ -109,7 +116,7 @@ export default function ServicesModal({
                       </select>
                     ) : (
                       <input
-                        name={`question${item.qno}`}
+                        name={item.question}
                         type="text"
                         placeholder="Write your answer"
                         className=" w-full rounded-lg border-2 border-gray-300 p-2"

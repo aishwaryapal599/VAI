@@ -4,6 +4,7 @@ import { sql } from "drizzle-orm";
 
 import { db } from "../db";
 import { callback, contactUs } from "../schema/formSchemas";
+import { servicesSurvey } from "../schema/service";
 import { users } from "../schema/users";
 
 export async function getCallbacks() {
@@ -18,4 +19,8 @@ export async function getUserType(userId: string) {
     .select({ type: users.user_type })
     .from(users)
     .where(sql`${users.id} = ${userId}`);
+}
+
+export async function allSurveyData() {
+  return await db.select().from(servicesSurvey);
 }
