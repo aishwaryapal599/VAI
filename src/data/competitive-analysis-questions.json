@@ -1,5 +1,10 @@
 [
   {
+    "qno": 6,
+    "question": "Registration Or Trade License No  ",
+    "type": "text"
+  },
+  {
     "qno": 1,
     "question": "Rate  Our Overall service experience between 1 and 5",
     "type": "select",
