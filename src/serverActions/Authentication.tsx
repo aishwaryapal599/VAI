@@ -17,10 +17,12 @@ export async function signup(
   currentState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  let username = formData.get("username") as string;
-  const password = formData.get("password") as string;
+  const username = formData.get("username")?.toString().toLowerCase() || "";
+  const password = formData.get("password")?.toString() || "";
+  const firstName = formData.get("firstName")?.toString() || "";
+  const lastName = formData.get("lastName")?.toString() || "";
 
-  if (!username || !password)
+  if (!username || !password || !firstName || !lastName)
     return { message: "Username & Password Required" };
   if (testUserName(username)) return { message: "Invalid username" };
   if (testPassword(password)) return { message: "Invalid password" };
@@ -33,7 +35,13 @@ export async function signup(
 
   const userId = generateId(15);
 
-  createUser(userId, username, hashedPassword);
+  createUser({
+    userId: userId,
+    username: username,
+    hashedPassword: hashedPassword,
+    firstName: firstName,
+    lastName: lastName,
+  });
 
   return redirect(`/signin`);
 }
@@ -42,8 +50,8 @@ export async function signin(
   currentState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  const username = formData.get("username") as string;
-  const password = formData.get("password") as string;
+  const username = formData.get("username")?.toString().toLowerCase() || "";
+  const password = formData.get("password")?.toString() || "";
 
   if (!username || !password)
     return { message: "Username & Password Required" };

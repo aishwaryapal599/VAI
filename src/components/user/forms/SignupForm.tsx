@@ -1,12 +1,12 @@
 "use client";
 
-import { useFormState } from 'react-dom';
+import { useFormState } from "react-dom";
 
-import Link from 'next/link';
+import Link from "next/link";
 
-import { signup } from '@/serverActions/Authentication';
+import { signup } from "@/serverActions/Authentication";
 
-import FormErrorMessage from './FormErrorMessage';
+import FormErrorMessage from "./FormErrorMessage";
 
 export default function SignupForm() {
   const initialState = {
@@ -17,6 +17,22 @@ export default function SignupForm() {
   return (
     <form className=" grid grid-flow-row space-y-5 text-xl" action={fromAction}>
       <h1 className="text-3xl font-semibold">Create an account</h1>
+      <label htmlFor="username">
+        First Name:
+        <input
+          className="ring-indigo-700/border-indigo-400 w-full rounded-md border-indigo-400 px-3 py-1.5 text-2xl ring-2 "
+          name="firstName"
+          id="username"
+        />
+      </label>
+      <label htmlFor="username">
+        Last Name:
+        <input
+          className="ring-indigo-700/border-indigo-400 w-full rounded-md border-indigo-400 px-3 py-1.5 text-2xl ring-2 "
+          name="lastName"
+          id="username"
+        />
+      </label>
       <label htmlFor="username">
         Username:
         <input

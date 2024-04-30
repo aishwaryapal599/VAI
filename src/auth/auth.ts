@@ -1,22 +1,24 @@
-import { Lucia } from "lucia";
-import drizzleMySQLAdapter from "./drizzleMySQLAdapter";
 import "server-only";
+
+import { Lucia } from "lucia";
+
+import drizzleMySQLAdapter from "./drizzleMySQLAdapter";
 
 export const lucia = new Lucia(drizzleMySQLAdapter, {
   sessionCookie: {
-    // this sets cookies with super long expiration
-    // since Next.js doesn't allow Lucia to extend cookie expiration when rendering pages
     expires: false,
     attributes: {
-      // set to `true` when using HTTPS
       secure: process.env.NODE_ENV === "production",
     },
   },
 
   getUserAttributes: (attributes) => {
     return {
-      // attributes has the type of DatabaseUserAttributes
       username: attributes.username,
+      id: attributes.id,
+      role: attributes.role,
+      firstName: attributes.first_name,
+      lastName: attributes.last_name,
     };
   },
 });
@@ -29,7 +31,12 @@ declare module "lucia" {
   }
 }
 
+type UserRole = "user" | "admin";
+
 type DatabaseUserAttributes = {
   username: string;
-  user_type: "user" | "admin" | "superAdmin";
+  id: string;
+  role: UserRole;
+  first_name: string;
+  last_name: string;
 };
