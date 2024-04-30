@@ -15,6 +15,13 @@
       "when": 1713560489697,
       "tag": "0001_yellow_the_phantom",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1714492087160,
+      "tag": "0002_polite_naoko",
+      "breakpoints": true
     }
   ]
 }

@@ -1,9 +1,8 @@
-import { redirect } from 'next/navigation';
+import { redirect } from "next/navigation";
 
-import { validateRequest } from '@/auth/validateRequest';
-import AdminHeader from '@/components/admin/AdminHeader';
-import AdminSidebar from '@/components/admin/AdminSidebar';
-import { getUserType } from '@/db/queries/adminQueries';
+import { validateRequest } from "@/auth/validateRequest";
+import AdminHeader from "@/components/admin/AdminHeader";
+import AdminSidebar from "@/components/admin/AdminSidebar";
 
 export default async function RootLayout({
   children,
@@ -12,9 +11,17 @@ export default async function RootLayout({
 }>) {
   const { user } = await validateRequest();
   if (!user) return redirect("/signin");
-  const userType = await getUserType(user?.id);
-  console.log("🚀 ~ userType:", userType);
-  console.log(user);
+
+  if (user.role !== "admin") {
+    return (
+      <div className="flex h-screen flex-col items-center justify-center">
+        <h1 className="text-3xl font-bold">403 Forbidden</h1>
+        <p className="text-sm">
+          You don&apos;t have permission to access this page.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">

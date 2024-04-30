@@ -7,12 +7,22 @@ import { callback, contactUs } from "../schema/formSchemas";
 import { servicesSurvey } from "../schema/service";
 import { users } from "../schema/users";
 
-export async function createUser(
-  userId: string,
-  username: string,
-  hashedPassword: string,
-) {
+export async function createUser({
+  userId,
+  username,
+  hashedPassword,
+  firstName,
+  lastName,
+}: {
+  userId: string;
+  username: string;
+  hashedPassword: string;
+  firstName: string;
+  lastName: string;
+}) {
   return await db.insert(users).values({
+    first_name: firstName,
+    last_name: lastName,
     id: userId,
     username: username,
     hashed_password: hashedPassword,
