@@ -20,7 +20,7 @@ export default function ContactUsForm() {
   return (
     <form
       ref={formRef}
-      className="mx-auto max-w-96 space-y-4 rounded-lg border border-gray-950/10 bg-slate-50 p-8 text-base font-semibold shadow-lg"
+      className="w-full  max-w-96 space-y-4 rounded-lg  border border-gray-950/10 bg-slate-50 p-8 text-base font-semibold shadow-lg"
       action={async (formData) => {
         fromAction(formData);
         formRef.current?.reset();
