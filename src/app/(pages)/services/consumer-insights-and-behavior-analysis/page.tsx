@@ -8,11 +8,8 @@ export default function Page() {
   const questions = Array.isArray(data) ? data : [];
   return (
     <>
-      <section className=" prose mx-auto my-20 max-w-4xl space-y-8 ">
-        <h2 className="our-services">
-          Consumer Insights and Behavior Analysis
-        </h2>
-        <div className="relative h-96  w-full ">
+      <section className="prose mx-auto  max-w-4xl space-y-8 px-4 ">
+        <div className="relative h-72  ">
           <Image
             className="h-full w-full rounded-lg object-cover shadow-lg"
             fill
@@ -20,6 +17,7 @@ export default function Page() {
             alt="image"
           />
         </div>
+        <h1 className="pt-8 "> Consumer Insights and Behavior Analysis</h1>
         <p className="pt-16">
           In delving into consumer preferences, behaviors, attitudes, and
           purchasing patterns, analysts embark on a journey to uncover the

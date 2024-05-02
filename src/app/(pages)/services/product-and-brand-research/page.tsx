@@ -8,9 +8,8 @@ export default function Page() {
   const questions = Array.isArray(data) ? data : [];
   return (
     <>
-      <section className="prose mx-auto my-20 max-w-4xl space-y-8 ">
-        <div className="relative h-96 w-full ">
-          <h2 className="our-services">Product and Brand Research</h2>
+      <section className="prose mx-auto  max-w-4xl space-y-8 px-4 ">
+        <div className="relative h-72  ">
           <Image
             className="h-full w-full rounded-lg object-cover shadow-lg"
             fill
@@ -18,7 +17,8 @@ export default function Page() {
             alt="image"
           />
         </div>
-        <p className="pt-16">
+        <h1 className="pt-8 ">Product and Brand Research</h1>
+        <p>
           Testing and evaluating new product concepts, features, packaging, and
           branding strategies is a pivotal step in the product development
           process, aimed at ensuring optimal market positioning and consumer

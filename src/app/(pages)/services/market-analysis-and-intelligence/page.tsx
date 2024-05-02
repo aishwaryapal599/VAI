@@ -8,9 +8,8 @@ export default function Page() {
   const questions = Array.isArray(data) ? data : [];
   return (
     <>
-      <section className="prose mx-auto my-20 max-w-4xl space-y-8 ">
-        <h2 className="our-services">Market Analysis and Intelligence</h2>
-        <div className="relative h-96 w-full ">
+      <section className="prose mx-auto  max-w-4xl space-y-8 px-4 ">
+        <div className="relative h-72  ">
           <Image
             className="h-full w-full rounded-lg object-cover shadow-lg"
             fill
@@ -18,6 +17,7 @@ export default function Page() {
             alt="image"
           />
         </div>
+        <h1 className="pt-8 ">Market Analysis and Intelligence</h1>
         <p className="pt-16">
           In the competitive landscape of business, assessing competitors&apos;
           strategies, products, pricing, positioning, and market share is
