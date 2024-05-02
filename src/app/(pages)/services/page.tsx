@@ -4,7 +4,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 export default function Page() {
   return (
     <section className="mx-auto  my-20 max-w-4xl space-y-8 px-4 ">
-      <h2 className="text-center text-3xl font-semibold">Our Services</h2>
+      <h2 className="text-center text-3xl ">Our Services</h2>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-4 no-underline">
         {/* <div className="grid grid-cols-1 gap-4 no-underline"> */}
         <Link
