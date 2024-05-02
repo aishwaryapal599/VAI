@@ -12,13 +12,13 @@ export default function Page() {
         />
       </div> */}
       <h1 className="mb-8 text-center text-4xl font-normal  text-gray-800">
-        About Us
+        about Us
       </h1>
       <div className="flex items-center justify-center gap-5 pb-12 text-justify">
         <div className="relative h-80 max-h-96 w-full ">
           <Image
             className="h-full w-full rounded-lg object-cover shadow-lg"
-            src="/assets/images/About/1.jpg"
+            src="/assets/images/about/1.jpg"
             fill={true}
             alt="image"
           />
@@ -50,7 +50,7 @@ export default function Page() {
         <div className="relative h-80 max-h-96 w-full ">
           <Image
             className="h-full w-full rounded-lg object-cover shadow-lg"
-            src="/assets/images/About/2.jpg"
+            src="/assets/images/about/2.jpg"
             fill={true}
             alt="image"
           />
@@ -60,7 +60,7 @@ export default function Page() {
         <div className="relative h-80 max-h-96 w-full ">
           <Image
             className="h-full w-full rounded-lg object-cover shadow-lg"
-            src="/assets/images/About/3.jpg"
+            src="/assets/images/about/3.jpg"
             fill={true}
             alt="image"
           />
