@@ -1,16 +1,17 @@
-import Image from 'next/image';
-
 export default function Page() {
   return (
     <section className="prose mx-auto my-20 max-w-4xl space-y-8 ">
-      <div className="relative h-96 w-full ">
+      {/* <div className="relative h-96 w-full ">
         <Image
           className="h-full w-full rounded-lg object-cover shadow-lg"
           fill
           src="/assets/images/about-us/aboutus.jpg"
           alt="image"
         />
-      </div>
+      </div> */}
+      <h1 className="mb-8 text-center text-4xl font-bold text-gray-800">
+        About Us
+      </h1>
       <p className="pt-16">
         In the competitive landscape of business, assessing competitors&apos;
         strategies, products, pricing, positioning, and market share is
