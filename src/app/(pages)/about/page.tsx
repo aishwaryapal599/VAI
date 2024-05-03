@@ -2,80 +2,79 @@ import Image from "next/image";
 
 export default function Page() {
   return (
-    <section className="prose mx-auto my-20 max-w-4xl space-y-8 ">
-      {/* <div className="relative h-96 w-full ">
-        <Image
-          className="h-full w-full rounded-lg object-cover shadow-lg"
-          fill
-          src="/assets/images/about-us/aboutus.jpg"
-          alt="image"
-        />
-      </div> */}
-      <h1 className="mb-8 text-center text-4xl font-normal  text-gray-800">
-        about Us
-      </h1>
-      <div className="flex items-center justify-center gap-5 pb-12 text-justify">
-        <div className="relative h-80 max-h-96 w-full ">
+    <article className="prose mx-auto my-20 max-w-4xl space-y-8 ">
+      <h1>About Vyapar Anusandhan Insights</h1>
+      <section>
+        <div className="relative mb-12 h-[350px] w-full">
           <Image
             className="h-full w-full rounded-lg object-cover shadow-lg"
-            src="/assets/images/about/1.jpg"
-            fill={true}
+            src="/assets/images/about.jpg"
+            fill
             alt="image"
           />
         </div>
-        <p className="w-full pt-16">
-          In the competitive landscape of business, assessing competitors&apos;
-          strategies, products, pricing, positioning, and market share is
-          paramount for organizations striving to maintain a competitive edge.
-          Analysts delve into a comprehensive examination of rival firms,
-          scrutinizing their every move to gain insights into their strengths,
-          weaknesses, opportunities, and threats. By meticulously dissecting
-          competitors&apos; strategies, analysts unveil the tactics and
-          approaches that have propelled their success or exposed
-          vulnerabilities.
-        </p>
-      </div>
-      <div className="flex items-center justify-center gap-5 pb-12 text-justify">
-        <p className="w-full pt-16">
-          A thorough analysis of competitors&apos; products and services sheds
-          light on market trends and consumer preferences, enabling clients to
-          identify gaps in the market or areas where they can differentiate
-          themselves. Pricing strategies are scrutinized to discern patterns and
-          understand the dynamics of price competition within the industry.
-          Moreover, analyzing competitors&apos; positioning helps clients refine
-          their own brand identity and messaging to carve out a distinct market
-          niche.
-        </p>
 
-        <div className="relative h-80 max-h-96 w-full ">
-          <Image
-            className="h-full w-full rounded-lg object-cover shadow-lg"
-            src="/assets/images/about/2.jpg"
-            fill={true}
-            alt="image"
-          />
-        </div>
-      </div>
-      <div className="flex items-center justify-center gap-5 pb-12  text-justify">
-        <div className="relative h-80 max-h-96 w-full ">
-          <Image
-            className="h-full w-full rounded-lg object-cover shadow-lg"
-            src="/assets/images/about/3.jpg"
-            fill={true}
-            alt="image"
-          />
-        </div>{" "}
-        <p className="w-full pt-16">
-          Market share analysis provides valuable benchmarks for clients to
-          gauge their relative performance within the industry and identify
-          areas for growth or consolidation. Armed with these insights, clients
-          can devise informed strategies to capitalize on opportunities,
-          mitigate risks, and stay ahead of competitors. Ultimately, the
-          assessment of competitors&apos; strategies equips clients with the
-          intelligence needed to navigate the competitive landscape
-          strategically and position themselves for long-term success.
+        <p>
+          At Vyapar Anusandhan Insights, based in the vibrant city of Kolkata,
+          India, we are more than just analysts – we&apos;re your strategic
+          partners in navigating the competitive landscape. In an era where
+          every move counts, understanding your competitors is not just
+          important; it&apos;s essential for success.
         </p>
-      </div>
-    </section>
+        <p>
+          With our roots deeply embedded in Kolkata&apos;s dynamic business
+          ecosystem, we bring a localized perspective combined with global
+          standards of research excellence. Our team of seasoned analysts goes
+          beyond the surface, meticulously dissecting competitors&apos;
+          strategies to uncover the insights that matter most to your business.
+        </p>
+      </section>
+      <section>
+        <h2>Our Approach</h2>
+        <ul>
+          <li>
+            <p>
+              <span className="mr-2 font-semibold">
+                Comprehensive Analysis:
+              </span>
+              From assessing product offerings to analyzing pricing strategies,
+              we leave no stone unturned in our quest to provide you with
+              actionable intelligence.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span className="mr-2  font-semibold">Localized Insight: </span>
+              We understand the nuances of the Kolkata market and tailor our
+              research to suit your specific needs and challenges.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span className="mr-2  font-semibold">
+                Strategic Recommendations:
+              </span>
+              We don&apos;t just deliver data; we provide strategic
+              recommendations that empower you to make informed decisions and
+              drive growth.
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Why Choose Us?</h2>
+        <p>
+          Whether you&apos;re a budding startup or an established enterprise,
+          our market share analysis and strategic recommendations empower you to
+          make informed decisions that drive growth and innovation. At Vyapar
+          Anusandhan Insights, we&apos;re not just here to help you compete;
+          we&apos;re here to help you thrive. Join hands with us, and let&apos;s
+          chart a course to success together.
+        </p>
+        <p>
+          Join hands with us, and let&apos;s chart a course to success together.
+        </p>
+      </section>
+    </article>
   );
 }
