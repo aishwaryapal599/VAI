@@ -10,7 +10,6 @@ export async function getCallbacks() {
 export async function getContactUs() {
   return await db?.select().from(contactUs);
 }
-
 export async function allSurveyData() {
   return await db.select().from(servicesSurvey);
 }
