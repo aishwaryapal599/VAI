@@ -41,13 +41,13 @@ export default function ServicesModal({ questions }: { questions: Questions }) {
   formState.type === "success" && toast.success(formState.message);
   return (
     <Dialog>
-      <DialogTrigger className="rounded-full bg-indigo-50/50 p-4 font-semibold text-indigo-950 shadow-lg backdrop-blur-3xl hover:bg-indigo-50/75">
-        Take a Survey
+      <DialogTrigger className="rounded-full bg-indigo-700 p-4 font-semibold text-indigo-50 shadow-lg backdrop-blur-3xl hover:bg-indigo-50/75">
+        Sample format for data Collection
       </DialogTrigger>
       <DialogContent className="h-5/6 max-w-2xl overflow-y-scroll">
         <DialogHeader>
           <DialogTitle className="mb-4  text-3xl">
-            Are you absolutely sure?
+            Data Collection Form
           </DialogTitle>
           <DialogDescription>
             <form

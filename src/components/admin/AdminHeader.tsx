@@ -1,24 +1,22 @@
-import { CircleUser, Search } from "lucide-react";
+import { CircleUser } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import AdminMobileNav from "./AdminMobileNav";
+
 import LogoutButton from "../user/LogoutButton";
+import AdminMobileNav from "./AdminMobileNav";
 
 export default function AdminHeader() {
   return (
-    <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+    <header className="flex h-14 items-center justify-between gap-4 border-b bg-muted/40 px-4 md:justify-end lg:h-[60px] lg:px-6">
       <AdminMobileNav />
-      <div className="w-full flex-1">
+      {/* <div className="w-full flex-1">
         <form>
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -29,7 +27,7 @@ export default function AdminHeader() {
             />
           </div>
         </form>
-      </div>
+      </div> */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" size="icon" className="rounded-full">
@@ -39,9 +37,7 @@ export default function AdminHeader() {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>Support</DropdownMenuItem>
+
           <DropdownMenuSeparator />
           <LogoutButton />
         </DropdownMenuContent>
